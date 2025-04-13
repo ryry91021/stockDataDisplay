@@ -2,6 +2,8 @@ import scraper, requests
 #Spy is real time s&p
 from bs4 import BeautifulSoup# Soup object for HTML response
 import requests #HTTP
+import pandas as pd
+
 SNP_LIVE_URL= 'https://finance.yahoo.com/quote/%5EGSPC/'
 GAINERS_URL="https://finance.yahoo.com/markets/stocks/gainers/"
 
