@@ -3,6 +3,8 @@ from fredapi import Fred
 import pandas as pd
 from forex_python.converter import CurrencyRates
 import requests
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
 
 def get_sp500_price():
     """
@@ -112,10 +114,6 @@ def get_treasury_yield_curve(api_key):
         print("Error retrieving treasury yield curve data:", e)
         return None
 
-import pandas as pd
-from forex_python.converter import CurrencyRates
-# Assume get_sp500_price, get_sofr_rate, and get_treasury_yield_curve are defined above
-
 
 def get_forex_matrix(currencies=None, reference_base="USD"):
     """
@@ -175,18 +173,6 @@ def get_forex_matrix(currencies=None, reference_base="USD"):
     # Create and return a DataFrame for better display/manipulation.
     forex_matrix = pd.DataFrame(matrix).T
     return forex_matrix
-
-
-# Example usage:
-if __name__ == "__main__":
-    # Specify the currencies you want in your forex matrix.
-    currencies_list = ['USD', 'EUR', 'GBP', 'JPY']
-    forex_df = get_forex_matrix(currencies=currencies_list)
-
-    if forex_df is not None:
-        print("Forex Conversion Matrix:")
-        print(forex_df)
-
 
 # Example usage:
 if __name__ == "__main__":
