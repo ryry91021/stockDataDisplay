@@ -3,8 +3,6 @@ from fredapi import Fred
 import pandas as pd
 from forex_python.converter import CurrencyRates
 import requests
-from concurrent.futures import ThreadPoolExecutor, as_completed
-
 
 def get_sp500_price():
     """
@@ -187,17 +185,16 @@ if __name__ == "__main__":
         print("Could not retrieve the S&P 500 index price.")
         
     # Replace with your actual FRED API key.
-    API_KEY = 'b1489e402bebcf49d70e8d4959cec977'
     
     # Retrieve and print SOFR rate
-    rate = get_sofr_rate(API_KEY)
+    rate = get_sofr_rate(FRED_API_KEY)
     if rate is not None:
         print(f"The latest SOFR rate is: {rate}")
     else:
         print("Could not retrieve the SOFR rate.")
     
     # Retrieve and print the Treasury yield curve
-    yield_df = get_treasury_yield_curve(API_KEY)
+    yield_df = get_treasury_yield_curve(FRED_API_KEY)
     if yield_df is not None:
         print("Latest Treasury Yields:")
         print(yield_df)
